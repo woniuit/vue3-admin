@@ -3,7 +3,7 @@ import { loginStore } from "@/store/login/index";
 const routes = [
     {
         path: "/",
-        redirect: "/main",
+        redirect: "/main/analysis/overview",
     },
     {
         path: "/login",

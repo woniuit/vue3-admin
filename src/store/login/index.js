@@ -17,7 +17,7 @@ export const loginStore = defineStore("main", {
                 this.token = res.data.data.token;
                 if (res.data.data.token) {
                     this.getMenuList();
-                    router.push("/main");
+                    router.push("/main/analysis/overview");
                 }
             });
         },

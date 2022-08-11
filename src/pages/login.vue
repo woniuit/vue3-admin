@@ -30,8 +30,8 @@ export default {
                 password: [{ required: true, message: "请输入密码", trigger: "blur" }],
             },
             ruleForm: {
-                name: "",
-                password: "",
+                name: "coderwhy",
+                password: "123456",
             },
         });
         async function submitForm() {

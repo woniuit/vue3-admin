@@ -14,16 +14,19 @@
             <template v-for="v in list" :key="v.url">
                 <el-sub-menu v-if="v.children" :index="v.url">
                     <template #title>
+                        <el-icon><Location /></el-icon>
                         {{ v.name }}
                     </template>
                     <el-menu-item v-for="vitem in v.children" :key="vitem.url" :index="vitem.url" @click="handleLink(vitem)">
                         <template #title>
+                            <el-icon><Location /></el-icon>
                             {{ vitem.name }}
                         </template>
                     </el-menu-item>
                 </el-sub-menu>
                 <el-menu-item v-else :index="v.url">
                     <template #title>
+                        <el-icon><Location /></el-icon>
                         {{ v.name }}
                     </template>
                 </el-menu-item>
@@ -37,7 +40,12 @@ import { Location } from "@element-plus/icons-vue";
 import { loginStore } from "@/store/login/index";
 import { useRouter, useRoute } from "vue-router";
 export default {
-    props: {},
+    props: {
+        isCollapse:{
+            type:Boolean,
+            default:false
+        }
+    },
     components: {
         Location,
     },
@@ -46,7 +54,7 @@ export default {
         const router = useRouter();
         const route = useRoute();
         let ts = reactive({
-            isCollapse: false,
+            // isCollapse: false,
         });
         function handleOpen(key, keyPath) {
             console.log(key, keyPath);
@@ -67,14 +75,6 @@ export default {
             const { path } = route;
             return path;
         });
-
-        watch(
-            activeMenu,
-            (val) => {
-                console.log("newVal, oldVal", val);
-            },
-            { immediate: true, deep: true }
-        );
 
         return {
             ...toRefs(ts),
